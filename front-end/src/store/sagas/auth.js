@@ -1,5 +1,6 @@
 import { call, put } from 'redux-saga/effects'
 import api from "../../services/api";
+import { push } from 'connected-react-router'
 
 import { notification } from 'antd';
 
@@ -16,11 +17,14 @@ const openNotificationWithIcon = type => {
 export function* signIn({ email, password }) {
     try {
       const response = yield call(api.post, '/sessions', {email, password})
-        console.log(response)
+
         localStorage.setItem('@codeDojo:token', response.data.token)
 
         yield put(AuthActions.signInSuccess(response.data.token))
+
+        yield put(push('/main'))
+
     } catch (e) {
-         openNotificationWithIcon('error')
+        openNotificationWithIcon('error')
     }
 }

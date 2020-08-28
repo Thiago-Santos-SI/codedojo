@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import {Link} from "react-router-dom"
 import { connect } from "react-redux";
 import {bindActionCreators} from 'redux'
 import AuthActions from '../../../store/ducks/auth'
@@ -87,7 +88,7 @@ class SignIn extends Component {
                     <Button type="submit" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
-                    Or <a href="">register now!</a>
+                    Or <Link to="/signup">register now!</Link>
                 </Form.Item>
             </Form>
 

@@ -15,7 +15,7 @@ export const INITIAL_STATE = Immutable({
 })
 
 export const success = (state, {token}) => {
-    //console.log(token)
+    console.log(token)
     /*
     if you want see the token
      */

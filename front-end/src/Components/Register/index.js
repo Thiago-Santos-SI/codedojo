@@ -1,23 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
+
 import 'antd/dist/antd.css';
 import './index.css';
+
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
+import api from "../../services/api";
+
 const Register = () => {
-    const onFinish = values => {
-        console.log('Received values of form: ', values);
-    };
+    const [username, setUsername] = useState([])
+    const [email, setEmail] = useState([])
+    const [password, sePassword] = useState([])
+
+
+    const handleRegisterUser = async e => {
+        e.preventDefault();
+
+    }
+
 
     return (
-        <Form
+        <Form onFinish={handleRegisterUser}
             name="normal_login"
             className="login-form"
             initialValues={{
                 remember: true,
             }}
-            onFinish={onFinish}
         >
             <Form.Item
                 name="username"
@@ -28,7 +37,10 @@ const Register = () => {
                     },
                 ]}
             >
-                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Nome de usuário" />
+                <Input
+                    value={}
+                    prefix={<UserOutlined className="site-form-item-icon" />}
+                    placeholder="Nome de usuário" />
             </Form.Item>
             <Form.Item
                 name="password"

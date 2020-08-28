@@ -1,18 +1,21 @@
 import React from "react";
-import { BrowserRouter, Switch, Route} from 'react-router-dom'
+import { ConnectedRouter } from "connected-react-router";
+import { Switch, Route } from 'react-router-dom'
+
+import history from "./history";
 
 import Main from "../Pages/Main";
 import SignUp from "../Pages/Auth/SignUp";
 import SignIn from "../Pages/Auth/SignIn";
 
 const Routes = () => (
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
         <Switch>
-            <Route exact path="/" component={SignIn} />
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
+            <Route exact path="/home" component={Main} />
         </Switch>
-    </BrowserRouter>
+    </ConnectedRouter>
 )
 
 export default Routes
