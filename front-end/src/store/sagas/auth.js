@@ -14,7 +14,7 @@ export function* signIn({ email, password }) {
 
         yield put(AuthActions.signInSuccess(response.data.token))
 
-        yield put(push('/main'))
+        yield put(push('/'))
 
     } catch (e) {
         openNotificationWithIconError('error')

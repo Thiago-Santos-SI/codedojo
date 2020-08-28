@@ -45,7 +45,7 @@ class SignIn extends Component {
                     rules={[
                         {
                             required: true,
-                            message: 'Please input your E-mail!',
+                            message: 'Por favor, insira seu E-mail!',
                         },
                     ]}
                 >
@@ -62,7 +62,7 @@ class SignIn extends Component {
                     rules={[
                         {
                             required: true,
-                            message: 'Please input your Password!',
+                            message: 'Por Favor, insira sua senha!',
                         },
                     ]}
                 >
