@@ -57,7 +57,9 @@ adonis serve --dev
 ```
 ### port: https://localhost:3333
 
-# Frontend
+# Frontend 
+
+- components contruidos com ant.design
 
 ## 🧐 O que tem dentro?
 ### Tecnologias
@@ -67,6 +69,8 @@ adonis serve --dev
 - react-redux
 - redux-saga
 - ducks 
+- ant-design
+- styled-components
 
 # Como usar o frontend:
 
