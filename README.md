@@ -30,6 +30,8 @@ yarn ou npm i
 sudo docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 -d mysql:5.7.31
 
 ```
+## configure o aquivo .env com as credenciais de seu docker container msql
+
 ## conecte o container a algum banco e use com alguma ferramenta como o workebench ou datagrip
 
 ## depois de conectar o banco de dados com o container, gere as migrations. (primeiro entra na pasta do backend para usar o comando)
