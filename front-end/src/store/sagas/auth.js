@@ -2,17 +2,9 @@ import { call, put } from 'redux-saga/effects'
 import api from "../../services/api";
 import { push } from 'connected-react-router'
 
-import { notification } from 'antd';
+import {openNotificationWithIconError} from '../../Components/Toast'
 
 import AuthActions from '../ducks/auth'
-
-const openNotificationWithIcon = type => {
-    notification[type]({
-        message: 'Falha no Login',
-        description: 'Verifique seu e-mail/senha',
-
-    });
-};
 
 export function* signIn({ email, password }) {
     try {
@@ -25,6 +17,6 @@ export function* signIn({ email, password }) {
         yield put(push('/main'))
 
     } catch (e) {
-        openNotificationWithIcon('error')
+        openNotificationWithIconError('error')
     }
 }

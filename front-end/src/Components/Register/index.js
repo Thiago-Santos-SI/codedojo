@@ -3,22 +3,64 @@ import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import './index.css';
 
-import { Form, Input, Button, Checkbox } from 'antd';
+import {Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom';
 
 import api from "../../services/api";
+import {
+    openNotificationWithIconError,
+    openNotificationWithIconPasswordValidate, openNotificationWithIconPasswordValidateRegex,
+    openNotificationWithIconSuccess
+} from "../Toast";
 
 const Register = () => {
-    const [username, setUsername] = useState([])
-    const [email, setEmail] = useState([])
-    const [password, sePassword] = useState([])
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [repeatPassword, setRepeatPassword] = useState('')
+
+    const history = useHistory()
+
+    const validate = (event) => {
+        const pass = event.target.value;
+        const reg = /^[A-Z]*$/;
+        const test = reg.test(pass);
+        if (test) {
+            alert('pass');
+            this.setState({value: pass});
+        }else{
+            alert('fail');
+        }
+    }
 
 
     const handleRegisterUser = async e => {
-        e.preventDefault();
+        try {
+            const data = {
+                username,
+                email,
+                password
+            }
+            if (repeatPassword === password) {
+                const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/;
+                const pass = reg.test(password)
+
+                if (pass !== true){
+                    openNotificationWithIconPasswordValidateRegex('error')
+                    throw new Error()
+                }
+                await api.post('/users', data)
+                openNotificationWithIconSuccess('success')
+                history.push('/signIn')
+            }else {
+                openNotificationWithIconPasswordValidate('error')
+            }
+        } catch (e) {
+
+        }
 
     }
-
 
     return (
         <Form onFinish={handleRegisterUser}
@@ -33,43 +75,64 @@ const Register = () => {
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your Username!',
+                        message: 'Por favor, insira seu nome de usuário!',
                     },
                 ]}
             >
                 <Input
-                    value={}
+                    value={username}
+                    onChange={event => setUsername(event.target.value)}
                     prefix={<UserOutlined className="site-form-item-icon" />}
                     placeholder="Nome de usuário" />
-            </Form.Item>
-            <Form.Item
-                name="password"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your Password!',
-                    },
-                ]}
-            >
-                <Input
-                    prefix={<LockOutlined className="site-form-item-icon" />}
-                    type="e-mail"
-                    placeholder="E-mail"
-                />
             </Form.Item>
             <Form.Item
                 name="email"
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your E-mail!',
+                        message: 'Por favor, insira seu nome de E-mail!',
                     },
                 ]}
             >
                 <Input
+                    value={email}
+                    onChange={event => setEmail(event.target.value)}
+                    prefix={<UserOutlined className="site-form-item-icon" />}
+                    placeholder="E-mail"
+                />
+            </Form.Item>
+            <Form.Item
+                name="password"
+                rules={[
+                    {
+                        required: true,
+                        message: 'Por favor, insira uma senha confiavel!',
+                    },
+                ]}
+            >
+                <Input.Password
+                    value={password}
+                    onChange={event => setPassword(event.target.value)}
                     prefix={<LockOutlined className="site-form-item-icon" />}
                     type="password"
                     placeholder="Senha"
+                />
+            </Form.Item>
+            <Form.Item
+                name="repeatPassword"
+                rules={[
+                    {
+                        required: true,
+                        message: 'Por favor, repita a senha!',
+                    },
+                ]}
+            >
+                <Input.Password
+                    value={repeatPassword}
+                    onChange={event => setRepeatPassword(event.target.value)}
+                    prefix={<LockOutlined className="site-form-item-icon" />}
+                    type="password"
+                    placeholder="Repita a senha"
                 />
             </Form.Item>
 
