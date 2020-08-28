@@ -1,5 +1,10 @@
-import { all } from 'redux-saga/effects'
+import { all, takeLatest } from 'redux-saga/effects'
 
-export default function* rootSaga(){
-    return yield all([])
+
+import { AuthTypes } from "../ducks/auth";
+import {signIn } from "./auth";
+
+export function* rootSaga(){
+    return yield all([
+        takeLatest(AuthTypes.SIGN_IN_REQUEST, signIn )])
 }
