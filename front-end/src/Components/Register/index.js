@@ -21,19 +21,6 @@ const Register = () => {
 
     const history = useHistory()
 
-    const validate = (event) => {
-        const pass = event.target.value;
-        const reg = /^[A-Z]*$/;
-        const test = reg.test(pass);
-        if (test) {
-            alert('pass');
-            this.setState({value: pass});
-        }else{
-            alert('fail');
-        }
-    }
-
-
     const handleRegisterUser = async e => {
         try {
             const data = {

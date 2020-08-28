@@ -20,3 +20,9 @@ export function* signIn({ email, password }) {
         openNotificationWithIconError('error')
     }
 }
+
+export function* signOut(){
+    localStorage.removeItem("@Omni:token")
+
+    yield put(push('/signin'))
+}
