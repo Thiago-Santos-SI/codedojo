@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux'
 import AuthActions from '../../../store/ducks/auth'
 
 import 'antd/dist/antd.css';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, notification, Space } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 class SignIn extends Component {
@@ -29,6 +29,7 @@ class SignIn extends Component {
 
     render() {
         const { email, password } = this.state
+
 
         return (
             <Form onFinish={this.handleSubmit}

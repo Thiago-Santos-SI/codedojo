@@ -4,8 +4,6 @@ import './App.css';
 import Routes from "./routes";
 import store from "./store";
 
-//import NormalLoginForm from './Components/Login';
-
 function App() {
   return (
       <Provider store={store}>
