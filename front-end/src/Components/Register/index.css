@@ -2,9 +2,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #c2e59c;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #64b3f4, #c2e59c);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #64b3f4, #c2e59c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #eae978;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #e6f464, #d4bd74);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #d4cb44, #d9e25b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 

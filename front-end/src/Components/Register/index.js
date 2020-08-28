@@ -9,7 +9,6 @@ import { useHistory } from 'react-router-dom';
 
 import api from "../../services/api";
 import {
-    openNotificationWithIconError,
     openNotificationWithIconPasswordValidate, openNotificationWithIconPasswordValidateRegex,
     openNotificationWithIconSuccess
 } from "../Toast";

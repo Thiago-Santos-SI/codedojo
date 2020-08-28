@@ -75,17 +75,18 @@ class SignIn extends Component {
                     />
                 </Form.Item>
                 <Form.Item>
+
                     <Form.Item name="remember" valuePropName="checked" noStyle>
                         <Checkbox>Remember me</Checkbox>
                     </Form.Item>
 
-                    <a className="login-form-forgot" href="">
+                    <a style={{ float: 'right' }} className="login-form-forgot" href="">
                         Forgot password
                     </a>
                 </Form.Item>
 
                 <Form.Item>
-                    <Button type="submit" htmlType="submit" className="login-form-button">
+                    <Button type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
                     Or <Link to="/signup">register now!</Link>
